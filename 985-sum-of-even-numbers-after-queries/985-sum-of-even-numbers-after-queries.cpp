@@ -1,30 +1,23 @@
-class Solution {        // for the sake of submission ^_^ on time :p
+class Solution {
 public:
-    // the idea is we don't calculate the even sum from scratch for each query
-    // instead, we calculate it at the beginning
-    // since each query only updates one value, 
-    // so we can adjust the even sum base on the original value and new value
-    vector<int> sumEvenAfterQueries(vector<int>& nums, vector<vector<int>>& queries) {
+    vector<int> sumEvenAfterQueries(vector<int>& nums, vector<vector<int>>& queries) {  // haan kyunki ek hi for loop hai to ho jaana chaiye -Divya Jain
+        int m = queries.size();
+        int n = nums.size();
         int evenSum = 0;
-        // calculate the sum of all even numbers
-        for (auto x : nums) {
-            if (x % 2 == 0) {
-                evenSum += x;
-            }
-        }
-        vector<int> ans;
-        for (auto q : queries) {
-            int val = q[0], idx = q[1];
-            // if original nums[idx] is even, then we deduct it from evenSum
-            if (nums[idx] % 2 == 0) 
-                evenSum -= nums[idx];
-            // in-place update nums
-            nums[idx] += val;
-            // check if we need to update evenSum for the new value
-            if (nums[idx] % 2 == 0) 
-                evenSum += nums[idx];
-            // then we have evenSum after this query, push it to ans 
-            ans.push_back(evenSum);
+        for(int i=0; i<n; ++i)
+            if(nums[i]%2 == 0)
+                evenSum += nums[i];
+        vector<int> ans(m);
+        for(int i=0; i<m; ++i){
+            int tempSum = nums[queries[i][1]];
+            nums[queries[i][1]] += queries[i][0];
+            if(tempSum%2 != 0 && nums[queries[i][1]]%2 == 0)
+                evenSum += nums[queries[i][1]];
+            else if(tempSum%2 == 0 && nums[queries[i][1]]%2 == 0)
+                evenSum += queries[i][0];
+            else if(tempSum%2 == 0 && nums[queries[i][1]]%2 != 0)
+                evenSum -= tempSum;
+            ans[i] = evenSum;
         }
         return ans;
     }
