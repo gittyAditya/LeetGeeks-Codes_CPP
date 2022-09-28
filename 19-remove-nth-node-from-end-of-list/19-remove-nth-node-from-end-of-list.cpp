@@ -14,17 +14,15 @@ public:
         int len = 1;
         ListNode *temp = head;
         while(temp->next){
-            temp = temp->next;
             len++;
+            temp = temp->next;
         }
-        if(len == 1)
-            return nullptr;
-        if(len - n == 0)
+        int num = len - n + 1;
+        if(num == 1)
             return head->next;
-        int node = len-n;
         temp = head;
         ListNode *t = head;
-        while(node--){
+        while(--num){
             t = temp;
             temp = temp->next;
         }
