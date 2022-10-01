@@ -3,8 +3,8 @@ public:
     int titleToNumber(string columnTitle) {
         int n = columnTitle.size();
         int ans = 0;
-        for(int i=0; i<n; ++i)
-            ans = ans*26*1L + columnTitle[i] - 64;
+        for(int i=n-1; i>=0; --i)
+            ans += (columnTitle[i] - 64)*pow(26, n-1-i);
         return ans;
     }
 };
