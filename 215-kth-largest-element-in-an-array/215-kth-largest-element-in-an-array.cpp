@@ -13,8 +13,6 @@ public:
                 push_heap(minHeap.begin(), minHeap.end(), greater<int>());
             }
         }
-        while(minHeap.size()-1 >= 1)
-            minHeap.pop_back();
         return minHeap[0];
     }
 };
