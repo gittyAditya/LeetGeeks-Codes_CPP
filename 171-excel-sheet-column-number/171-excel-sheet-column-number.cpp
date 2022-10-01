@@ -1,10 +1,16 @@
 class Solution {
 public:
-    int titleToNumber(string columnTitle) {
-        int n = columnTitle.size();
+    void fun(string c, int i, int &ans) {       // kittu ne kiya hai mere ;*;
+        if(i == c.size())
+            return;
+        ans = ans*26*1L + c[i]-64;
+        fun(c, i+1, ans);
+    }
+    int titleToNumber(string c) {
         int ans = 0;
-        for(int i=n-1; i>=0; --i)
-            ans += (columnTitle[i] - 64)*pow(26, n-1-i);
+        fun(c, 0, ans);
         return ans;
     }
 };
+        // for(int i=0; i<n; ++i)
+        //     ans = ans*26*1L + c[i] - 64;
