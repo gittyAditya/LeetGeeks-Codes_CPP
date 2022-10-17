@@ -1,10 +1,10 @@
 class Solution {
 public:
     bool checkIfPangram(string sentence) {
-        unordered_set<int> st;
-        for(auto i:sentence)
-            st.insert(i);
-        if(st.size() == 26)
+        int mask = 0;
+        for(char i : sentence)
+            mask |= 1 << i - 'a';
+        if(mask == (1<<26) - 1)
             return true;
         return false;
     }
