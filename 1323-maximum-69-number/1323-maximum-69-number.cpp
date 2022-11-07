@@ -1,13 +1,18 @@
 class Solution {
 public:
     int maximum69Number (int num) {
-        string s = to_string(num);
-        for(auto &c:s){
-            if(c == '6'){
-                c = '9';
-                break;
-            }
+        int
+            temp = num,
+            i = 0,
+            sixIndex = -1;
+        
+        while(temp>0){
+            if(temp%10 == 6)
+                sixIndex = i;
+            temp /= 10;
+            ++i;
         }
-        return stoi(s);
+        sixIndex;
+        return sixIndex != -1 ? (num + 3*(pow(10, sixIndex))) : num;
     }
 };
