@@ -9,8 +9,7 @@ public:
                 stk.pop();
                 continue;
             }
-            if(i<n)
-                stk.push(s[i]);
+            stk.push(s[i]);
         }
         while(!stk.empty()){
             ans = stk.top() + ans;
