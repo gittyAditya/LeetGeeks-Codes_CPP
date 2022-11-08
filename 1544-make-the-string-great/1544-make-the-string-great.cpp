@@ -1,7 +1,7 @@
 class Solution {
 public:
-    string makeGood(string s) {
-        string ans = "";
+    string makeGood(string s) {     // multiple submissions for the sake of o ms ::)
+        string ans;
         int n = s.size();
         stack <char> stk;
         for(int i=0; i<n; ++i){
