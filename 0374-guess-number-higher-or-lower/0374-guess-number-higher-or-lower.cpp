@@ -9,21 +9,17 @@
 
 class Solution {
 public:
-    int guessNumber(int n) {
-        long l = 1;
-        long r = n*1L+1;        // this or change int n -> long n;
-        long num = (l+r)/2;
-        while(l<r){
-            if(guess(num) == -1){
-                r = num;
-                num = (l+r)/2;
-            }
-            else if(guess(num) == 1){
-                l = num;
-                num = (l+r)/2;
-            }
+    int guessNumber(int n) {        // only this is most optimized correct binary search
+        int l = 1;
+        int r = n;
+        while(l<=r){
+            int num = (r-l)/2 + l;      // save overflow
+            if(guess(num) == -1)
+                r = num-1;              // correct binary search appraoch
+            else if(guess(num) == 1)
+                l = num+1;              // binary search `\_o.o_/`
             else return num;
         }
-        return num;
+        return 1;
     }
 };
