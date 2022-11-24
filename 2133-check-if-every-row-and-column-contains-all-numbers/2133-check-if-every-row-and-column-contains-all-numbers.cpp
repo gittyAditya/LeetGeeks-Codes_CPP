@@ -3,19 +3,15 @@ public:
     bool checkValid(vector<vector<int>>& matrix) {
         int n = matrix.size();
         for(int i=0; i<n; ++i){
-            unordered_set<int> st;
+            unordered_set<int> row;
+            unordered_set<int> column;
             for(int j=0; j<n; ++j){
-                if(st.find(matrix[i][j]) != st.end())
+                if(row.find(matrix[i][j]) != row.end())
                     return false;
-                st.insert(matrix[i][j]);
-            }
-        }
-        for(int i=0; i<n; ++i){
-            unordered_set<int> st;
-            for(int j=0; j<n; ++j){
-                if(st.find(matrix[j][i]) != st.end())
+                row.insert(matrix[i][j]);
+                if(column.find(matrix[j][i]) != column.end())
                     return false;
-                st.insert(matrix[j][i]);
+                column.insert(matrix[j][i]);
             }
         }
         return true;
