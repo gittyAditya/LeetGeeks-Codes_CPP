@@ -2,16 +2,15 @@ class Solution {
 public:
     bool checkValid(vector<vector<int>>& matrix) {
         int n = matrix.size();
+        unordered_set<string> st;
         for(int i=0; i<n; ++i){
-            unordered_set<int> row;
-            unordered_set<int> column;
             for(int j=0; j<n; ++j){
-                if(row.find(matrix[i][j]) != row.end())
+                string r = to_string(matrix[i][j])+ 'r'+ to_string(i);
+                string c = to_string(matrix[i][j])+ 'c'+ to_string(j);
+                if(st.find(r) != st.end() || st.find(c) != st.end())
                     return false;
-                row.insert(matrix[i][j]);
-                if(column.find(matrix[j][i]) != column.end())
-                    return false;
-                column.insert(matrix[j][i]);
+                st.insert(r);
+                st.insert(c);
             }
         }
         return true;
