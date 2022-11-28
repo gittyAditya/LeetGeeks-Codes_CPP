@@ -1,10 +1,10 @@
 class Solution {
 public:
-    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
-        unordered_set<int> st;
+    vector<vector<int>> findWinners(vector<vector<int>>& matches) { // o sort ke chode -Divya Jain
+        set<int> st;
         vector<int> won;
         vector<int> one;
-        unordered_map<int, int> mp;
+        map<int, int> mp;
         int n = matches.size();
         for(int i=0; i<n; ++i)
             mp[matches[i][1]]++;
@@ -16,8 +16,6 @@ public:
                 one.push_back(i.first);
         for(auto i:st)
             won.push_back(i);
-        sort(won.begin(), won.end());
-        sort(one.begin(), one.end());
         return {won, one};
     }
 };
