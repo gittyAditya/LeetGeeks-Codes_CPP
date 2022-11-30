@@ -5,8 +5,11 @@ public:
         for(auto i:arr)
             mp[i]++;
         unordered_set<int> st;
-        for(auto i:mp)
+        for(auto i:mp){
+            if(st.count(i.second))
+                return false;
             st.insert(i.second);
-        return mp.size() == st.size() ? true : false;
+        }
+        return true;
     }
 };
