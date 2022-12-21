@@ -1,14 +1,14 @@
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> hash(1001, 0);
+        unordered_map<int, int> mp;
         for(auto i:nums1)
-            hash[i]++;     
+            mp[i]++;     
         vector<int> ans;
         for(auto i:nums2)
-            if(hash[i] > 0){
+            if(0 < mp[i]--){
                 ans.push_back(i);
-                hash[i]--;
+                // mp[i]--;
             }
         return ans;
     }
