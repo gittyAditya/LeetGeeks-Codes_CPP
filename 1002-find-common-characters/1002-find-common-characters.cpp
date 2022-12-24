@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<string> commonChars(vector<string>& words) {
-        vector<int> count(26,INT_MAX);
+        vector<int> count(26,10001);        // this can be this \{'.'}/
         for(auto i:words){
             vector<int> freq(26,0);
             for(auto j:i)
