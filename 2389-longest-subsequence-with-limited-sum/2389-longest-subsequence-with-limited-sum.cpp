@@ -6,9 +6,7 @@ public:
         int m = queries.size();
         for(int i=0; i<n-1; ++i)
             nums[i+1] += nums[i];
-        for(auto i:nums)
-            cout << i << " ";
-        vector<int> ans(m, 0);
+        vector<int> ans(m);
         for(int i=0; i<m; ++i){
             int j=0;
             while(j<n && nums[j] <= queries[i])
