@@ -1,15 +1,15 @@
 class Solution {
 public:
     int maxIceCream(vector<int>& costs, int coins) {
-        sort(costs.begin(), costs.end());
-        int
-            n = costs.size(),
-            ans=0,
-            i=0;
+        priority_queue<int, vector<int>, greater<int>> pq;
+        int ans = 0;
+        for(auto i:costs)
+            pq.push(i);
         while(coins){
-            if(i<n && costs[i] <= coins) {
+            if(pq.top() <= coins && !pq.empty()){
                 ans++;
-                coins -= costs[i++];
+                coins -= pq.top();
+                pq.pop();
             }
             else break;
         }
