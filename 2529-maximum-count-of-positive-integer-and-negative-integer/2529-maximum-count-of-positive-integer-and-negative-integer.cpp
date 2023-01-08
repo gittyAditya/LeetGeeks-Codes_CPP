@@ -5,7 +5,7 @@ public:
         for(auto i:nums){
             if(i>0)
                 pos++;
-            if(i<0)
+            else if(i<0)
                 neg++;
         }
         return max(pos,neg);
